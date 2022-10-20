@@ -1,0 +1,29 @@
+# Änderungen an den eingebundenen Dokumenten
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: prod
+
+replicas:
+- name: helloworld
+  count: 2
+
+resources:
+- ../base
+
+
+images:
+- name: helloworld
+  newName: k3d-registry.127.0.0.1.nip.io:5000/helloworld
+  newTag: v0.1.0
+
+patches:
+- path: secret.yaml
+- path: configmap.yaml
+- target:
+    kind: Ingress
+    labelSelector: "app=helloworld"
+  patch: |-
+    - op: replace
+      path: /spec/rules/0/host
+      value: helloworld.prod.127.0.0.1.nip.io

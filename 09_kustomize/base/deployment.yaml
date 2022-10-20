@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloworld
+  labels:
+    app: helloworld
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: helloworld
+  template:
+    metadata:
+      labels:
+        app: helloworld
+    spec:
+      containers:
+      - name: helloworld
+        image: helloworld
+        ports:
+        - containerPort: 8080
+        envFrom:
+        - configMapRef:
+            name: helloworld-config
+        - secretRef:
+            name: helloworld-secret
+        resources:
+          limits:
+            memory: 100Mi
+          requests:
+            memory: 100Mi
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            port: 8080
+            path: /
+          periodSeconds: 10
+          successThreshold: 1

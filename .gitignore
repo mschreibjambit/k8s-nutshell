@@ -1,0 +1,7 @@
+tools/k3d
+tools/k9s
+tools/kubectl
+/*.iml
+.project
+.idea
+

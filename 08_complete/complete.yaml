@@ -1,0 +1,92 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: demo
+---
+apiVersion: v1
+data:
+  NAME: WORLD
+kind: ConfigMap
+metadata:
+  name: helloworld-config
+  namespace: demo
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: helloworld-secret
+  namespace: demo
+stringData:
+  SECRETNAME: DLROW
+type: Opaque
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: helloworld
+  namespace: demo
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: helloworld
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: helloworld
+  name: helloworld
+  namespace: demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: helloworld
+  template:
+    metadata:
+      labels:
+        app: helloworld
+    spec:
+      containers:
+      - envFrom:
+        - configMapRef:
+            name: helloworld-config
+        - secretRef:
+            name: helloworld-secret
+        image: k3d-registry.127.0.0.1.nip.io:5000/helloworld:v0.1.0
+        name: helloworld
+        ports:
+        - containerPort: 8080
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /
+            port: 8080
+          periodSeconds: 10
+          successThreshold: 1
+        resources:
+          limits:
+            memory: 100Mi
+          requests:
+            memory: 100Mi
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: helloworld-ingress
+  namespace: demo
+spec:
+  rules:
+  - host: helloworld.127.0.0.1.nip.io
+    http:
+      paths:
+      - backend:
+          service:
+            name: helloworld
+            port:
+              number: 80
+        path: /
+        pathType: Prefix

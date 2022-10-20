@@ -1,0 +1,25 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- deployment.yaml
+- configmap.yaml
+- secret.yaml
+- service.yaml
+- ingress.yaml
+- namespace.yaml
+
+# Doku findet sich hier: https://kubectl.docs.kubernetes.io/references/kustomize/kustomization
+# Beispiel hier: Entferne die Kommentare in Zeile 17 - 25, der secretGenerator und configMapGenerator 
+# werden verwendet. Dafür füge ein Kommentarzeichen vor die Zeile 6 und 7. 
+# configmap.yaml und secret.yaml werden auskommentiert
+
+#secretGenerator:
+#  - name: helloworld-secret
+#    literals:
+#      - SECRETNAME=Secret-Generator
+
+#configMapGenerator:
+#  - name: helloworld-config
+#    literals:
+#      - NAME=World-Generator

@@ -1,0 +1,8 @@
+---
+apiVersion: v1
+data:
+  NAME: WORLD
+kind: ConfigMap
+metadata:
+  name: helloworld-config
+  namespace: demo
