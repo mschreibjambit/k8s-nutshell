@@ -41,6 +41,8 @@ download_k9s() {
 
 }
 
+cd $(dirname $0) 
+
 if [ ! -f k3d ];then
     download_k3d
 fi
@@ -50,3 +52,5 @@ fi
 if [ ! -f k9s ]; then
     download_k9s
 fi
+
+cd -
