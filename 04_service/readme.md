@@ -4,7 +4,7 @@
 
 kubectl apply -f service.yaml
 
-* Öffne nun den im Browser http://localhost:8080
+* Öffne nun im Browser http://localhost:8080
 
 * Lass dir die Services im Namespace anzeigen:
 

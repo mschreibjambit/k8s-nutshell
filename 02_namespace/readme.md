@@ -1,6 +1,6 @@
 # Aufgabe
 
-* Lege einen Namespace mit folgendem Befehl aus:
+* Lege einen Namespace mit folgendem Befehl an:
 
 kubectl apply –f namespace.yaml
 

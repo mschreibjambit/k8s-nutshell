@@ -30,6 +30,6 @@ kubectl get pods -n demo
 
 * Lass dir nochmal die Pods anzeigen....
 
-* Man kann auch die Pods über die Labels selectieren. Schaue hier mal in das deployment.yaml. Beispiel fürs Löschen:
+* Man kann auch die Pods über die Labels selektieren. Schaue hier mal in das deployment.yaml. Beispiel fürs Löschen:
 
 kubectl delete pods -n demo -l app=helloworld
