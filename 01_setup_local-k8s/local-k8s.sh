@@ -36,7 +36,7 @@ done
 
 case $1 in
     start)
-        start $2
+        k3d cluster list develop >/dev/null 2>&1 && echo Cluster is online  || start $2
         ;;
     delete)
 	delete
