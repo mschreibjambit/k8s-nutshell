@@ -14,13 +14,21 @@ var (
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	str := "HelloWorld"
+	str := "Hello World"
+	h, err := os.Hostname()
+
+	if err == nil {
+		str = fmt.Sprintf("%s\n\nHostname: %s", str, h)
+	}
+
 	if name != "" {
-		str = fmt.Sprintf("%s - Hello %s", str, name)
+		str = fmt.Sprintf("%s\nName: %s", str, name)
 	}
+
 	if secretname != "" {
-		str = fmt.Sprintf("%s  - Secretname:  %s", str, secretname)
+		str = fmt.Sprintf("%s\nSecretname:  %s", str, secretname)
 	}
+
 	w.Write([]byte(str))
 }
 
