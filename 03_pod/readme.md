@@ -4,7 +4,7 @@
 
 kubectl apply -f pod.yaml
 
-* Lass dir die Pods im Namespace demo anzeigen mit:
+* Lass dir die Pods im Namespace demo anzeigen:
 
 kubectl get pods –n demo
 

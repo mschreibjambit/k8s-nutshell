@@ -1,6 +1,6 @@
 # Aufgabe
 
-* man kann die yamls auch kombinieren. Lade die komplette Definition auf den K8S:
+* man kann die YAMLs auch kombinieren. Lade die komplette Definition auf den K8S:
 
 kubectl apply -f complete.yaml
 
@@ -11,3 +11,4 @@ kubectl apply -f complete.yaml
 kubectl delete -f complete.yaml
 
 * Überleg dir, ob die Reihenfolge der einzelnen yamls in complete.yaml eine Bedeutung hat?
+  Was würde passieren, wenn die Ressourcen eine andere Reihenfolge hätten?

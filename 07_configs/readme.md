@@ -6,9 +6,9 @@ kubectl apply -f configmap.yaml
 kubectl apply -f secret.yaml
 kubectl apply -f deployment.yaml
 
-* Öffne den Browser http://helloworld.127.0.0.1.nip.io hier siehst nun die Configurationen.
+* Öffne den Browser http://helloworld.127.0.0.1.nip.io hier siehst nun die Konfigurationen.
 
-* Ändere mal etwas an der Configmap (nur im Data Feld) und lade sie auf den K8S
+* Ändere mal etwas an der ConfigMap (nur im Data Feld) und lade sie auf den K8S
 
 * Prüfe nochmal im Browser http://helloworld.127.0.0.1.nip.io - du siehst keine Änderung
 

@@ -6,7 +6,7 @@ Die Configdateien sind so angepasst, dass sie einen temporären Mirror verwenden
 * k3d-develop-config.yaml
 * local-k8s.sh
 
-Damit später dieses Beispiel weiterhin funktioniert, auch wenn der Mirror entfernt wurde, soll folgendes gemacht werden:
+Damit später dieses Beispiel weiterhin funktioniert, auch wenn der Mirror entfernt wurde, muss folgendes gemacht werden:
 
 * entferne folgende Zeilen aus `local-k8s.sh`:
 ```
